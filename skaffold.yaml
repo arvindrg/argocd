@@ -1,0 +1,17 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  tagPolicy:
+    gitCommit: {}
+  artifacts:
+  - image: gajjala7012/spring-boot-mongo
+  local:
+    push: true
+deploy:
+  helm:
+    releases:
+    - name: skaffold-helm
+      chartPath: springboot 
+      setValues:
+        image.repository: gajjala7012/spring-boot-mongo
+        image.tag: 94
